@@ -256,7 +256,7 @@ async function invokeModel(req: Request): Promise<Response> {
       `,
       },
       GOOGLE: {
-        "Google Ads": `
+        "Dosplay Network Ads": `
 
         DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
 
