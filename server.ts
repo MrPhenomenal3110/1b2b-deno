@@ -63,7 +63,7 @@ async function invokeModel(req: Request): Promise<Response> {
             "compliance_status": "string",
             
             // Array of specific compliance issues found
-            // If there are no compliance issues this will be an empty array
+            // If there are no compliance issues this will be an empty array but do not omit this field
             "platform_specific_issues": [
                 {
                     // The element or aspect that has an issue
@@ -137,7 +137,7 @@ async function invokeModel(req: Request): Promise<Response> {
             "compliance_status": "string",
             
             // Array of specific compliance issues found
-            // If there are no compliance issues this will be an empty array
+            // If there are no compliance issues this will be an empty array but do not omit this field
             "platform_specific_issues": [
                 {
                     // The element or aspect that has an issue
@@ -204,7 +204,7 @@ async function invokeModel(req: Request): Promise<Response> {
             "compliance_status": "string",
             
             // Array of specific compliance issues found
-            // If there are no compliance issues this will be an empty array
+            // If there are no compliance issues this will be an empty array but do not omit this field
             "platform_specific_issues": [
                 {
                     // The element or aspect that has an issue
@@ -271,7 +271,7 @@ async function invokeModel(req: Request): Promise<Response> {
             "compliance_status": "string",
             
             // Array of specific compliance issues found
-            // If there are no compliance issues this will be an empty array
+            // If there are no compliance issues this will be an empty array but do not omit this field
             "platform_specific_issues": [
                 {
                     // The element or aspect that has an issue
@@ -341,7 +341,7 @@ async function invokeModel(req: Request): Promise<Response> {
             "compliance_status": "string",
             
             // Array of specific compliance issues found
-            // If there are no compliance issues this will be an empty array
+            // If there are no compliance issues this will be an empty array but do not omit this field
             "platform_specific_issues": [
                 {
                     // The element or aspect that has an issue
@@ -412,7 +412,7 @@ async function invokeModel(req: Request): Promise<Response> {
             "compliance_status": "string",
             
             // Array of specific compliance issues found
-            // If there are no compliance issues this will be an empty array
+            // If there are no compliance issues this will be an empty array but do not omit this field
             "platform_specific_issues": [
                 {
                     // The element or aspect that has an issue
@@ -479,7 +479,7 @@ async function invokeModel(req: Request): Promise<Response> {
             "compliance_status": "string",
             
             // Array of specific compliance issues found
-            // If there are no compliance issues this will be an empty array
+            // If there are no compliance issues this will be an empty array but do not omit this field
             "platform_specific_issues": [
                 {
                     // The element or aspect that has an issue
@@ -546,7 +546,7 @@ async function invokeModel(req: Request): Promise<Response> {
             "compliance_status": "string",
             
             // Array of specific compliance issues found
-            // If there are no compliance issues this will be an empty array
+            // If there are no compliance issues this will be an empty array but do not omit this field
             "platform_specific_issues": [
                 {
                     // The element or aspect that has an issue
@@ -620,7 +620,7 @@ async function invokeModel(req: Request): Promise<Response> {
             "compliance_status": "string",
             
             // Array of specific compliance issues found
-            // If there are no compliance issues this will be an empty array
+            // If there are no compliance issues this will be an empty array but do not omit this field
             "platform_specific_issues": [
                 {
                     // The element or aspect that has an issue
@@ -684,7 +684,7 @@ async function invokeModel(req: Request): Promise<Response> {
             "compliance_status": "string",
             
             // Array of specific compliance issues found
-            // If there are no compliance issues this will be an empty array
+            // If there are no compliance issues this will be an empty array but do not omit this field
             "platform_specific_issues": [
                 {
                     // The element or aspect that has an issue
@@ -749,7 +749,7 @@ async function invokeModel(req: Request): Promise<Response> {
             "compliance_status": "string",
 
             // Array of specific compliance issues found
-            // If there are no compliance issues this will be an empty array
+            // If there are no compliance issues this will be an empty array but do not omit this field
             "platform_specific_issues": [
                 {
                     // The element or aspect that has an issue
@@ -813,7 +813,7 @@ async function invokeModel(req: Request): Promise<Response> {
         "compliance_status": "string",
         
         // Array of specific compliance issues found
-        // If there are no compliance issues this will be an empty array
+        // If there are no compliance issues this will be an empty array but do not omit this field
         "platform_specific_issues": [
             {
                 // The element or aspect that has an issue
@@ -1587,7 +1587,7 @@ async function invokeModel(req: Request): Promise<Response> {
         "compliance_status": "string",
         
         // Array of specific compliance issues found
-        // If there are no compliance issues this will be an empty array
+        // If there are no compliance issues this will be an empty array but do not omit this field
         "platform_specific_issues": [
             {
                 // The element or aspect that has an issue
@@ -1617,7 +1617,7 @@ async function invokeModel(req: Request): Promise<Response> {
     }
     VERY IMPORTANT NOTE: "Only send one json object. No extra details or text. Just one JSON object as specified"
 `;
-
+    console.log(first);
     const input = {
       modelId: "anthropic.claude-3-sonnet-20240229-v1:0", // Updated to latest model ID
       body: JSON.stringify({
