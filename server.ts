@@ -517,12 +517,12 @@ async function invokeModel(req: Request): Promise<Response> {
         - Account tagging: Up to 20 accounts
         - Shopping tags: Up to 5 products
         - Creative Requirements:
-        - Text overlay: Less than 20% of image
-        - Boomerang support: Yes
-        - Multiple image carousel: Up to 10 images
+            - Text overlay: Less than 20% of image
+            - Boomerang support: Yes
+            - Multiple image carousel: Up to 10 images
       `,
         "Stories and Reels": `
-              expected output format:
+        expected output format:
 
         json
         {
