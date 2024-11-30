@@ -495,8 +495,6 @@ json
   - Formats: JPG, PNG, GIF
   - Animation: Supported for GIFs
 - Text Components:
-  - Website card title: 70 characters
-  - Description: 50 characters
   - Card types: Single image, Carousel
 - Media Requirements:
   - Image quality: High resolution
