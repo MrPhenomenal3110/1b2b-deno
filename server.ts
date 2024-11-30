@@ -51,6 +51,8 @@ async function invokeModel(req: Request): Promise<Response> {
     const SYSTEM_PROMPTS = {
       META: `
 
+      DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
+
       expected output format:
 
 json
@@ -183,6 +185,8 @@ json
 `,
       GOOGLE: `
 
+      DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
+
       expected output format:
 
 json
@@ -311,6 +315,8 @@ json
 `,
       INSTAGRAM: `
 
+      DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
+
       expected output format:
 
 json
@@ -403,6 +409,8 @@ json
 `,
       LINKEDIN: `
 
+      DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
+
       expected output format:
 
 json
@@ -488,6 +496,7 @@ json
   - Custom variables: Supported
 `,
       TIKTOK: `
+      DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
 
       expected output format:
 
@@ -574,7 +583,7 @@ json
   - Click attribution window: 7 days
   - View attribution window: 24 hours`,
       TWITTER: `
-
+        DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
       expected output format:
 
 json
@@ -610,6 +619,7 @@ json
     // Overall impact on expected ad performance: "HIGH", "MEDIUM", or "LOW"
     "estimated_performance_impact": "string"
 }
+    VERY IMPORTANT NOTE: "Your final return format should only be one JSON format as mentioned in the prompt below. Only send one json object. No extra details or text. Just one JSON object as specified"
 
 
           # Advertisement Compliance Rules/Parameters
@@ -661,7 +671,9 @@ json
     };
 
     const mainSystemPrompt = `
+    TRY NOT TO HARD MATCH EVERY FIELD
     expected output format:
+    DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
 
 json
 {
@@ -696,7 +708,9 @@ json
     // Overall impact on expected ad performance: "HIGH", "MEDIUM", or "LOW"
     "estimated_performance_impact": "string"
 }
-    VERY IMPORTANT NOTE: "YOur final return format should only be one JSON format as mentioned in the prompt below. Only send one json object. No extra details or text. Just one JSON object as specified"
+    If the advertisment is compliant , do not pass in the platform_specific_issues. It is not necessary that every advertisment in non-compliant. Make sure to show COMPLIANT as the status if the ad is compliant.
+
+    VERY IMPORTANT NOTE: "Your final return format should only be one JSON format as mentioned in the prompt below. Only send one json object. No extra details or text. Just one JSON object as specified"
 ## Universal Campaign Settings
 
 ### Audience Targeting
@@ -779,6 +793,8 @@ json
   - CCPA compliance
   - Data collection disclosure
   - User consent requirements
+
+    If the advertisment is compliant , do not pass in the platform_specific_issues. It is not necessary that every advertisment in non-compliant. There can be ads that may miss the margin by only a few 5%-10%. Be linient in such conditions Make sure to show COMPLIANT as the status if the advertisment is compliant.
 
 - You are an AI assistant specialized in analyzing advertisement compliance across various digital platforms. Your role is to analyze the provided JSON input and ensure all elements comply with platform-specific advertising requirements as mentioned above. DO not create your own responses. Stick to what is provided in the prompt. Do not deviate from the prompt.
     
