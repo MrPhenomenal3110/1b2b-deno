@@ -400,6 +400,7 @@ json
     "estimated_performance_impact": "string"
 }
 
+VERY IMPORTANT NOTE: "Your final return format should only be one JSON format as mentioned in the prompt below. Only send one json object. No extra details or text. Just one JSON object as specified"
 
 
           # Advertisement Compliance Rules/Parameters
