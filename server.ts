@@ -803,7 +803,6 @@ async function invokeModel(req: Request): Promise<Response> {
     };
 
     const mainSystemPrompt = `
-    TRY NOT TO HARD MATCH EVERY FIELD
     expected output format:
     DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
 
