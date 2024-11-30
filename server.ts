@@ -1611,7 +1611,7 @@ async function invokeModel(req: Request): Promise<Response> {
         anthropic_version: "bedrock-2023-05-31",
         temperature: 0,
         system:
-          SYSTEM_PROMPTS[payload.platform.name[payload.platform.placement]] +
+          SYSTEM_PROMPTS[payload.platform.name][payload.platform.placement] +
           mainSystemPrompt,
         messages: [{ role: "user", content: JSON.stringify(payload.message) }],
         max_tokens: 30000,
