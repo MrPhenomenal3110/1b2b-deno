@@ -1617,7 +1617,6 @@ async function invokeModel(req: Request): Promise<Response> {
     }
     VERY IMPORTANT NOTE: "Only send one json object. No extra details or text. Just one JSON object as specified"
 `;
-    console.log(first);
     const input = {
       modelId: "anthropic.claude-3-sonnet-20240229-v1:0", // Updated to latest model ID
       body: JSON.stringify({
