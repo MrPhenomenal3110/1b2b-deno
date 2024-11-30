@@ -53,9 +53,7 @@ async function invokeModel(req: Request): Promise<Response> {
       META: {
         "Image Feed Ads": `
 
-        DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
-
-        expected output format:
+          expected output format:
 
         json
         {
@@ -127,8 +125,6 @@ async function invokeModel(req: Request): Promise<Response> {
       `,
         "Stories Ads": `
 
-      DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
-
       expected output format:
 
         json
@@ -193,8 +189,6 @@ async function invokeModel(req: Request): Promise<Response> {
         - Vertical viewing optimization required
       `,
         "Carousel Ads": `
-
-      DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
 
       expected output format:
 
@@ -261,9 +255,7 @@ async function invokeModel(req: Request): Promise<Response> {
       GOOGLE: {
         "Display Network Ads": `
 
-        DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
-
-        expected output format:
+          expected output format:
 
         json
         {
@@ -331,9 +323,7 @@ async function invokeModel(req: Request): Promise<Response> {
         `,
         "Search Ads": `
 
-        DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
-
-        expected output format:
+          expected output format:
 
         json
         {
@@ -402,9 +392,7 @@ async function invokeModel(req: Request): Promise<Response> {
         `,
         "Discovery Ads": `
 
-        DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
-
-        expected output format:
+          expected output format:
 
         json
         {
@@ -469,8 +457,6 @@ async function invokeModel(req: Request): Promise<Response> {
       },
       INSTAGRAM: {
         "Feed Posts": `
-      DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
-
       expected output format:
 
         json
@@ -536,9 +522,7 @@ async function invokeModel(req: Request): Promise<Response> {
         - Multiple image carousel: Up to 10 images
       `,
         "Stories and Reels": `
-            DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
-
-        expected output format:
+              expected output format:
 
         json
         {
@@ -610,9 +594,7 @@ async function invokeModel(req: Request): Promise<Response> {
       LINKEDIN: {
         "Message Ads": `
 
-        DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
-
-        expected output format:
+          expected output format:
 
         json
         {
@@ -674,9 +656,7 @@ async function invokeModel(req: Request): Promise<Response> {
         `,
         "Sponsored Content": `
 
-        DO NOT MARK AS NON_COMPLIANT if MINIMUM REQUIREMENTS ARE MET.
-
-        expected output format:
+          expected output format:
 
         json
         {
