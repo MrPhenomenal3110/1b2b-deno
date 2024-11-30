@@ -6,6 +6,9 @@ import {
 // Type definition for the request payload
 interface RequestPayload {
   message: string;
+  platform: {
+    name: string;
+  };
 }
 
 // AWS Configuration
@@ -45,11 +48,51 @@ async function invokeModel(req: Request): Promise<Response> {
       );
     }
 
-    const systemPrompt = `
-    # Advertisement Compliance Rules/Parameters
+    const SYSTEM_PROMPTS = {
+      META: `
+
+      expected output format:
+
+json
+{
+    // Overall compliance status - either "COMPLIANT" or "NON_COMPLIANT"
+    "compliance_status": "string",
+    
+    // Array of specific compliance issues found
+    "platform_specific_issues": [
+        {
+            // The element or aspect that has an issue
+            "element": "string",
+            
+            // Current implementation or value
+            "current_value": "string",
+            
+            // The platform's requirement for this element
+            "requirement": "string",
+            
+            // Severity level: "HIGH", "MEDIUM", or "LOW"
+            "severity": "string",
+            
+            // Specific, actionable recommendation to fix the issue
+            "recommendation": "string"
+        }
+    ],
+    
+    // Array of general recommendations for improvement
+    "general_recommendations": [
+        "string"
+    ],
+    
+    // Overall impact on expected ad performance: "HIGH", "MEDIUM", or "LOW"
+    "estimated_performance_impact": "string"
+}
+
+
+      VERY IMPORTANT NOTE: "YOur final return format should only be one JSON format as mentioned in the prompt below. Only send one json object. No extra details or text. Just one JSON object as specified"
+      # Advertisement Compliance Rules/Parameters
 # Detailed Advertising Platform Parameters
 
-## Facebook/Meta Ads
+      ## Facebook/Meta Ads
 
 ### Image Feed Ads
 - Resolution Parameters:
@@ -137,8 +180,51 @@ async function invokeModel(req: Request): Promise<Response> {
   - Total file size: 250MB maximum
   - Transition effects: Platform-controlled
   - Card order: Customizable or dynamic
+`,
+      GOOGLE: `
 
-## Google Ads
+      expected output format:
+
+json
+{
+    // Overall compliance status - either "COMPLIANT" or "NON_COMPLIANT"
+    "compliance_status": "string",
+    
+    // Array of specific compliance issues found
+    "platform_specific_issues": [
+        {
+            // The element or aspect that has an issue
+            "element": "string",
+            
+            // Current implementation or value
+            "current_value": "string",
+            
+            // The platform's requirement for this element
+            "requirement": "string",
+            
+            // Severity level: "HIGH", "MEDIUM", or "LOW"
+            "severity": "string",
+            
+            // Specific, actionable recommendation to fix the issue
+            "recommendation": "string"
+        }
+    ],
+    
+    // Array of general recommendations for improvement
+    "general_recommendations": [
+        "string"
+    ],
+    
+    // Overall impact on expected ad performance: "HIGH", "MEDIUM", or "LOW"
+    "estimated_performance_impact": "string"
+}
+
+
+      VERY IMPORTANT NOTE: "YOur final return format should only be one JSON format as mentioned in the prompt below. Only send one json object. No extra details or text. Just one JSON object as specified"
+      # Advertisement Compliance Rules/Parameters
+# Detailed Advertising Platform Parameters
+
+ ## Google Ads
 
 ### Display Network Ads
 - Standard Display Sizes:
@@ -222,6 +308,52 @@ async function invokeModel(req: Request): Promise<Response> {
     - CPV (Cost per view)
     - CPM (Cost per thousand impressions)
     - Target CPA (Cost per acquisition)
+`,
+      INSTAGRAM: `
+
+      expected output format:
+
+json
+{
+    // Overall compliance status - either "COMPLIANT" or "NON_COMPLIANT"
+    "compliance_status": "string",
+    
+    // Array of specific compliance issues found
+    "platform_specific_issues": [
+        {
+            // The element or aspect that has an issue
+            "element": "string",
+            
+            // Current implementation or value
+            "current_value": "string",
+            
+            // The platform's requirement for this element
+            "requirement": "string",
+            
+            // Severity level: "HIGH", "MEDIUM", or "LOW"
+            "severity": "string",
+            
+            // Specific, actionable recommendation to fix the issue
+            "recommendation": "string"
+        }
+    ],
+    
+    // Array of general recommendations for improvement
+    "general_recommendations": [
+        "string"
+    ],
+    
+    // Overall impact on expected ad performance: "HIGH", "MEDIUM", or "LOW"
+    "estimated_performance_impact": "string"
+}
+
+
+        VERY IMPORTANT NOTE: "Your final return format should only be one JSON format as mentioned in the prompt below. Only send one json object. No extra details or text. Just one JSON object as specified"
+
+          # Advertisement Compliance Rules/Parameters
+# Detailed Advertising Platform Parameters
+
+
 
 ## Instagram
 
@@ -268,6 +400,50 @@ async function invokeModel(req: Request): Promise<Response> {
   - Text safe area: 250 pixels from edges
   - Sound: Recommended
   - Vertical optimization required
+`,
+      LINKEDIN: `
+
+      expected output format:
+
+json
+{
+    // Overall compliance status - either "COMPLIANT" or "NON_COMPLIANT"
+    "compliance_status": "string",
+    
+    // Array of specific compliance issues found
+    "platform_specific_issues": [
+        {
+            // The element or aspect that has an issue
+            "element": "string",
+            
+            // Current implementation or value
+            "current_value": "string",
+            
+            // The platform's requirement for this element
+            "requirement": "string",
+            
+            // Severity level: "HIGH", "MEDIUM", or "LOW"
+            "severity": "string",
+            
+            // Specific, actionable recommendation to fix the issue
+            "recommendation": "string"
+        }
+    ],
+    
+    // Array of general recommendations for improvement
+    "general_recommendations": [
+        "string"
+    ],
+    
+    // Overall impact on expected ad performance: "HIGH", "MEDIUM", or "LOW"
+    "estimated_performance_impact": "string"
+}
+
+
+
+          # Advertisement Compliance Rules/Parameters
+# Detailed Advertising Platform Parameters
+
 
 ## LinkedIn
 
@@ -310,8 +486,53 @@ async function invokeModel(req: Request): Promise<Response> {
   - CTA button text: 20 characters
   - Lead gen forms: Optional
   - Custom variables: Supported
+`,
+      TIKTOK: `
 
-## TikTok
+      expected output format:
+
+json
+{
+    // Overall compliance status - either "COMPLIANT" or "NON_COMPLIANT"
+    "compliance_status": "string",
+    
+    // Array of specific compliance issues found
+    "platform_specific_issues": [
+        {
+            // The element or aspect that has an issue
+            "element": "string",
+            
+            // Current implementation or value
+            "current_value": "string",
+            
+            // The platform's requirement for this element
+            "requirement": "string",
+            
+            // Severity level: "HIGH", "MEDIUM", or "LOW"
+            "severity": "string",
+            
+            // Specific, actionable recommendation to fix the issue
+            "recommendation": "string"
+        }
+    ],
+    
+    // Array of general recommendations for improvement
+    "general_recommendations": [
+        "string"
+    ],
+    
+    // Overall impact on expected ad performance: "HIGH", "MEDIUM", or "LOW"
+    "estimated_performance_impact": "string"
+}
+
+
+      VERY IMPORTANT NOTE: "YOur final return format should only be one JSON format as mentioned in the prompt below. Only send one json object. No extra details or text. Just one JSON object as specified"
+      
+          # Advertisement Compliance Rules/Parameters
+# Detailed Advertising Platform Parameters
+
+
+      ## TikTok
 
 ### In-Feed Ads
 - Video Requirements:
@@ -351,9 +572,50 @@ async function invokeModel(req: Request): Promise<Response> {
   - View definition: 6 seconds
   - Engagement tracking available
   - Click attribution window: 7 days
-  - View attribution window: 24 hours
+  - View attribution window: 24 hours`,
+      TWITTER: `
 
-## Twitter
+      expected output format:
+
+json
+{
+    // Overall compliance status - either "COMPLIANT" or "NON_COMPLIANT"
+    "compliance_status": "string",
+    
+    // Array of specific compliance issues found
+    "platform_specific_issues": [
+        {
+            // The element or aspect that has an issue
+            "element": "string",
+            
+            // Current implementation or value
+            "current_value": "string",
+            
+            // The platform's requirement for this element
+            "requirement": "string",
+            
+            // Severity level: "HIGH", "MEDIUM", or "LOW"
+            "severity": "string",
+            
+            // Specific, actionable recommendation to fix the issue
+            "recommendation": "string"
+        }
+    ],
+    
+    // Array of general recommendations for improvement
+    "general_recommendations": [
+        "string"
+    ],
+    
+    // Overall impact on expected ad performance: "HIGH", "MEDIUM", or "LOW"
+    "estimated_performance_impact": "string"
+}
+
+
+          # Advertisement Compliance Rules/Parameters
+# Detailed Advertising Platform Parameters
+
+      ## Twitter
 
 ### Image Ads
 - Technical Specifications:
@@ -395,7 +657,46 @@ async function invokeModel(req: Request): Promise<Response> {
     - Automatic
     - Target cost
     - Maximum bid
+`,
+    };
 
+    const mainSystemPrompt = `
+    expected output format:
+
+json
+{
+    // Overall compliance status - either "COMPLIANT" or "NON_COMPLIANT"
+    "compliance_status": "string",
+    
+    // Array of specific compliance issues found
+    "platform_specific_issues": [
+        {
+            // The element or aspect that has an issue
+            "element": "string",
+            
+            // Current implementation or value
+            "current_value": "string",
+            
+            // The platform's requirement for this element
+            "requirement": "string",
+            
+            // Severity level: "HIGH", "MEDIUM", or "LOW"
+            "severity": "string",
+            
+            // Specific, actionable recommendation to fix the issue
+            "recommendation": "string"
+        }
+    ],
+    
+    // Array of general recommendations for improvement
+    "general_recommendations": [
+        "string"
+    ],
+    
+    // Overall impact on expected ad performance: "HIGH", "MEDIUM", or "LOW"
+    "estimated_performance_impact": "string"
+}
+    VERY IMPORTANT NOTE: "YOur final return format should only be one JSON format as mentioned in the prompt below. Only send one json object. No extra details or text. Just one JSON object as specified"
 ## Universal Campaign Settings
 
 ### Audience Targeting
@@ -479,13 +780,13 @@ async function invokeModel(req: Request): Promise<Response> {
   - Data collection disclosure
   - User consent requirements
 
-- You are an AI assistant specialized in analyzing advertisement compliance across various digital platforms. Your role is to analyze the provided JSON input and ensure all elements comply with platform-specific advertising requirements.
+- You are an AI assistant specialized in analyzing advertisement compliance across various digital platforms. Your role is to analyze the provided JSON input and ensure all elements comply with platform-specific advertising requirements as mentioned above. DO not create your own responses. Stick to what is provided in the prompt. Do not deviate from the prompt.
     
     
     # Advertisement Compliance Checker
 
 ## Input Format
-The JSON input will contain the following required fields:
+The JSON input will contain the following required fields in the given format:
 
 [
     {
@@ -1054,27 +1355,14 @@ The JSON input will contain the following required fields:
                 }
             }
         ]
-    },
+    }, // this object is just an example in order to understand the structure of the input. DO NOT directly use the values from here. the values here are not the source of truth.
     [],
     "platform": {
-      "name": "Facebook",
-      "placement": "Feed",
-      "device_targeting": ["mobile", "desktop"],
-      "objective": "Conversions"
+      "name": enum(string) (A platform can be any of these : Facebook/LinkedIn/Instagram/Tiktok/GoogleAds/Twitter),
+      "placement": enum(string) (Can be any of these: In-feed/TopView/BrandTakeover/SparkAds),
+      "device_targeting": an array of string (can be an array containing a combination of "mobile", "desktop" and "tablet"),
+      "objective": enum(string) (Can be any one of these : "Awareness"/"Consideration"/"Conversions"/"Lead Generation"/"Sales"/"Traffic")
     },
-    "metadata": {
-      "campaign_name": "Fair_And_Lovely",
-      "target_audience": {
-        "age_range": "0-100",
-        "interests": ["Beauty", "Cosmetics", "Makeup", "Skin-Care"],
-        "location": "India"
-      },
-      "tracking": {
-        "utm_source": "facebook",
-        "utm_medium": "paid_social",
-        "utm_campaign": "fair_and_lovely"
-      }
-    }
 ]
 
 
@@ -1087,7 +1375,8 @@ The JSON input will contain the following required fields:
    - Confirm if the content type is allowed
 
 2. Technical Compliance
-   - Image/Video dimensions and aspect ratio
+   - Image/Video dimensions
+   - Aspect ratio
    - File size limitations
    - Format compatibility
    - Resolution requirements
@@ -1176,14 +1465,17 @@ json
     // Overall impact on expected ad performance: "HIGH", "MEDIUM", or "LOW"
     "estimated_performance_impact": "string"
 }
-NOTE: "Only send one json object. No extra details or text. Just one JSON object as specified"
+VERY IMPORTANT NOTE: "Only send one json object. No extra details or text. Just one JSON object as specified"
 `;
 
     const input = {
       modelId: "anthropic.claude-3-sonnet-20240229-v1:0", // Updated to latest model ID
       body: JSON.stringify({
         anthropic_version: "bedrock-2023-05-31",
-        system: systemPrompt,
+        temperature: 0,
+        system:
+          SYSTEM_PROMPTS[payload.platform.name] ||
+          SYSTEM_PROMPTS.META + mainSystemPrompt,
         messages: [{ role: "user", content: JSON.stringify(payload.message) }],
         max_tokens: 30000,
       }),
