@@ -72,27 +72,10 @@ Respond with a JSON object in this exact format: (Do not add \`\`\` json \`\`\` 
         {
             "element": string,
             "current_value": string,
-            "current_position_of_element": { 
+            "replacement_suggesitons": [
               // send this field only if the element is a text-type element
-              // IMPORTANT: these will be the four co-ordinates, creating a rectangle around the text.
-              // IMPORTANT: Consider the bottom left as x=0 and y=0
-              "top-left": {
-                "x": string (in pixel), // do not provide random values. These should be proper and accurate.
-                "y": string (in pixel) // do not provide random values. These should be proper and accurate.
-              },
-              "top-right": {
-                "x": string (in pixel), // do not provide random values. These should be proper and accurate.
-                "y": string (in pixel)  // do not provide random values. These should be proper and accurate.
-              },
-              "bottom-left": {
-                "x": string (in pixel), // do not provide random values. These should be proper and accurate.
-                "y": string (in pixel)  // do not provide random values. These should be proper and accurate.
-              },
-              "bottom-right": {
-                "x": string (in pixel), // do not provide random values. These should be proper and accurate.
-                "y": string (in pixel)  // do not provide random values. These should be proper and accurate.
-              }
-            },
+              array of suggestions like which words/sentences can be used instead of the given text.
+            ]
             "requirement": string,
             "severity": "HIGH" | "MEDIUM" | "LOW",
             "recommendation": string
