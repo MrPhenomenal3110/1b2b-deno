@@ -72,6 +72,10 @@ Respond with a JSON object in this exact format: (Do not add \`\`\` json \`\`\` 
         {
             "element": string,
             "current_value": string,
+            "current_position_of_element": { // send this field only if the element is a text-type element
+              "x": string,
+              "y": string
+            },
             "requirement": string,
             "severity": "HIGH" | "MEDIUM" | "LOW",
             "recommendation": string
