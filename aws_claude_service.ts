@@ -72,10 +72,25 @@ Respond with a JSON object in this exact format: (Do not add \`\`\` json \`\`\` 
         {
             "element": string,
             "current_value": string,
-            "current_position_of_element": { // send this field only if the element is a text-type element
-              "x": string,
-              "y": string
-            },
+            "current_position_of_element": [ // send this field only if the element is a text-type element
+              // IMPORTANT: these will be the four co-ordinates, creating a rectangle around the text.
+              "top-left": {
+                "x": string, // do not provide random values. These should be proper and accurate.
+                "y": string  // do not provide random values. These should be proper and accurate.
+              },
+              "top-right": {
+                "x": string, // do not provide random values. These should be proper and accurate.
+                "y": string  // do not provide random values. These should be proper and accurate.
+              },
+              "bottom-left": {
+                "x": string, // do not provide random values. These should be proper and accurate.
+                "y": string  // do not provide random values. These should be proper and accurate.
+              },
+              "bottom-right": {
+                "x": string, // do not provide random values. These should be proper and accurate.
+                "y": string  // do not provide random values. These should be proper and accurate.
+              }
+            ],
             "requirement": string,
             "severity": "HIGH" | "MEDIUM" | "LOW",
             "recommendation": string
